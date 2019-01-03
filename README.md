@@ -79,6 +79,12 @@ chmod 755 libexec/QtWebEngineProcess
 
 Now you can launch Eagle as non-root user. Make sure the $PATH environment variable is set properly.
 
+## Set up the desktop icon
+
+todo
+
 ## The smart solution via a script
 
 todo
+
+
