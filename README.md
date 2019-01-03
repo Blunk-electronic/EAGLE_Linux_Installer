@@ -1,2 +1,82 @@
 # EAGLE_Linux_Installer
-A script that does a proper installation on Linux
+A script that does a proper installation on Linux (verified on OpenSuse Tumbleweed)
+
+## The problem
+There is still no proper installer provided by Autodesk for version 9.x as we knew it from earlier versions.
+One has to unpack a tag.gz archive and has to copy it where one pleases. From my point of view 
+this is a non-professional way to install software as it implies issues when installing as root
+in /opt/ for example:
+
+- If you do that as non-root user, there is not much to fix: 
+  After unpacking change into directory eagle-9.2.0/lib and delete all files starting with libxcb*.
+  If the executable "eagle" in eagle-9.2.0 is started, everything should work fine (make sure this
+  stuff is installed: libx11-xcb1, libxcb-dri2-0, libxcb-dri3-0, libxcb-glx0, libxcb-present0, libxcb-sync1,
+  libxcb-xfixes0. 
+  see also https://forums.autodesk.com/t5/eagle-forum/can-t-run-eagle-on-debian-10-testing/td-p/8312348).
+  
+- If you want to install it as root in /opt for example, there is a lot to be fixed. 
+  Important when unpacking the tar file is the option --no-same-owner. Otherwise you get the files unpacked 
+  with the root user id 501, which is definitely no root user id. Further-on lots of file permissions are
+  way to restrictive so that the non-root user is unable to start Eagle. 
+  I made things probably unnecessary labor-some but it finally worked and I have got no other idea how to
+  solve the issues. I did this procedure under OpenSuse Tumbleweed: 
+  First copy the archive file in /opt . Then proceed as follows:
+
+## The solution step by step
+
+Unpack the gz archive:
+```sh
+$ gunzip Autodesk_EAGLE_9.2.2_English_Linux_64bit.tar.gz
+```
+  
+Unpack the tar archive:
+```sh
+$ tar --no-same-owner -xf Autodesk_EAGLE_9.2.2_English_Linux_64bit.tar 
+```
+
+Change the Eagle install directory permissions so that non-root users may enter and read it:
+```sh
+chmod 755 eagle-9.2.2
+```
+
+Change into the Eagle install directory:
+```sh
+cd eagle-9.2.2/
+```
+
+All files there must have the r (readable) flag set so that also non-root users can open and read them:
+```sh
+chmod -R a+r *
+```
+
+Change the Eagle executable so that non-root users may launch it:
+```sh
+chmod a+x eagle
+```
+
+All directories must be readable by all users. so that non-root users can change into them:
+```sh
+find . -type d -exec chmod a+x {} \;
+```
+
+Remove all files starting with 'libxcb' in the subdirectory 'lib'
+```sh
+rm lib/libxcb*
+```
+
+The remaining libraries there must be set executable for non-root users. 
+I'm not sure if all files require this setting but this way all of them are addressed:
+```sh
+chmod 755 lib/*
+```
+
+Change permissions of Qt stuff:
+```sh
+chmod 755 libexec/QtWebEngineProcess
+```
+
+Now you can launch Eagle as non-root user. Make sure the $PATH environment variable is set.
+
+## The solution via a script
+
+todo
