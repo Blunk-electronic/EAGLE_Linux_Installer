@@ -24,6 +24,8 @@ in /opt/ for example:
 
 ## The solution step by step
 
+Login as root. Observe the follwing instructions carefully in order not to mess up your machine.
+
 Unpack the gz archive:
 ```sh
 $ gunzip Autodesk_EAGLE_9.2.2_English_Linux_64bit.tar.gz
@@ -75,8 +77,8 @@ Change permissions of Qt stuff:
 chmod 755 libexec/QtWebEngineProcess
 ```
 
-Now you can launch Eagle as non-root user. Make sure the $PATH environment variable is set.
+Now you can launch Eagle as non-root user. Make sure the $PATH environment variable is set properly.
 
-## The solution via a script
+## The smart solution via a script
 
 todo
