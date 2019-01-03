@@ -1,5 +1,5 @@
 # EAGLE_Linux_Installer
-A script that does a proper installation on Linux (verified on OpenSuse Tumbleweed)
+A guide on how to install Eagle on Linux (verified on OpenSuse Tumbleweed)
 
 ## The problem
 There is still no proper installer provided by Autodesk for version 9.x as we knew it from earlier versions.
