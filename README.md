@@ -84,9 +84,9 @@ todo
 
 ## The smart solution via a install script
 Here is the more comfortable install script. It is a bash script.
-CAUTION: YOU RUN THIS SCRIPT ON YOUR OWN RISK !
 
-<div class="alert alert-block alert-danger"><b>Danger:</b> This alert box indicates a dangerous or potentially negative action.</div>
+<div class="alert alert-block alert-danger"><b>CAUTION:
+</b>YOU RUN THIS SCRIPT ON YOUR OWN RISK !</div>
 
 It requires as arguments first the name of the install file and second
 the version number.
