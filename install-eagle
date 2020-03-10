@@ -1,0 +1,44 @@
+#! /bin/bash
+
+installer=$1
+version=$2
+
+echo "installing EAGLE" $version "..."
+
+echo "unzipping the install file" $installer "..."
+gunzip -k $installer
+
+installer=${installer%.gz}
+echo "unpacking the tape archive" $installer "..."
+tar --no-same-owner -xf $installer
+
+# Change permissions so that non-root users may enter and read it:
+chmod 755 eagle-$version
+
+# change into the eagle install directory
+cd eagle-$version
+
+# All files there must have the r (readable) flag set so that also non-root
+# users can open and read them:
+chmod -R a+r *
+
+# Change the Eagle executable so that non-root users may launch it:
+chmod a+x eagle
+
+# All directories must be readable by all users. so that non-root users
+# can change into them:
+find . -type d -exec chmod a+x {} \;
+
+# Remove all files starting with 'libxcb' in the subdirectory 'lib'
+rm lib/libxcb*
+
+# The remaining libraries there must be set executable for non-root 
+# users. I'm not sure if all files require this setting but this way all
+# of them are addressed:
+chmod 755 lib/*
+
+# Change permissions of Qt stuff:
+chmod 755 libexec/QtWebEngineProcess
+
+# echo $installer
+exit

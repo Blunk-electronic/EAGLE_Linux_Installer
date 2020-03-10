@@ -80,10 +80,25 @@ chmod 755 libexec/QtWebEngineProcess
 Now you can launch Eagle as non-root user. Make sure the $PATH environment variable is set properly.
 
 ## Set up the desktop icon
-
 todo
 
-## The smart solution via a script
+## The smart solution via a install script
+Here is the more comfortable install script. It is a bash script.
+CAUTION: YOU RUN THIS SCRIPT ON YOUR OWN RISK !
+
+<div class="alert alert-block alert-danger"><b>Danger:</b> This alert box indicates a dangerous or potentially negative action.</div>
+
+It requires as arguments first the name of the install file and second
+the version number.
+It unpacks the install file in the directory where the install file exists.
+It applies the rights of the user who is running the script.
+If you run it as root, make sure you are in the right working directory.
+
+Example on how to launch the installer:
+
+```sh
+install-eagle Autodesk_EAGLE_9.5.2_English_Linux_64bit.tar.gz 9.5.2
+```
 
 todo
 
