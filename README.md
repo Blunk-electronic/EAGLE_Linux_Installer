@@ -101,6 +101,4 @@ Example on how to launch the installer:
 install-eagle Autodesk_EAGLE_9.5.2_English_Linux_64bit.tar.gz 9.5.2
 ```
 
-todo
-
 

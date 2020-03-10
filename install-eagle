@@ -40,5 +40,4 @@ chmod 755 lib/*
 # Change permissions of Qt stuff:
 chmod 755 libexec/QtWebEngineProcess
 
-# echo $installer
 exit
