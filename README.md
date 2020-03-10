@@ -82,11 +82,12 @@ Now you can launch Eagle as non-root user. Make sure the $PATH environment varia
 ## Set up the desktop icon
 todo
 
-## The smart solution via a install script
+## The smart solution via an install script
 Here is the more comfortable install script. It is a bash script.
 
 <div class="alert alert-block alert-danger"><b>CAUTION:
 </b>YOU RUN THIS SCRIPT ON YOUR OWN RISK !</div>
+<br/>
 
 It requires as arguments first the name of the install file and second
 the version number.
