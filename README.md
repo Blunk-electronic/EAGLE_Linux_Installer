@@ -79,11 +79,9 @@ chmod 755 libexec/QtWebEngineProcess
 
 Now you can launch Eagle as non-root user. Make sure the $PATH environment variable is set properly.
 
-## Set up the desktop icon
-todo
 
 ## The smart solution via an install script
-Here is the more comfortable install script. It is a bash script.
+Here is the more comfortable install script install-eagle.sh.
 
 <!--<div class="alert alert-block alert-danger"><b>CAUTION:
 </b>YOU RUN THIS SCRIPT ON YOUR OWN RISK !</div>
@@ -100,7 +98,7 @@ The script will install Eagle in directory /opt !
 Example on how to launch the installer:
 
 ```sh
-install-eagle Autodesk_EAGLE_9.6.2_English_Linux_64bit.tar.gz 9.6.2
+sh install-eagle Autodesk_EAGLE_9.6.2_English_Linux_64bit.tar.gz 9.6.2
 ```
 
 Finally set the PATH variable of your system so that all users can launch Eagle.
@@ -112,4 +110,16 @@ PATH=$PATH:/opt/eagle-9.6.2
 ```
 
 Log off and on so that the new path setting takes effect.
+
+
+## Set up the desktop icon
+The script install-desktop-icons does the job. It must be launched by
+the non-root user who wants to have the icon on her desktop. It requires
+as argument the Eagle version like 9.6.2 :
+
+```sh
+sh install-desktop-icons.sh 9.6.2
+```
+
+
 
