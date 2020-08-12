@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=EAGLE
+Comment=
+Exec=eagle
+Icon=/opt/eagle-9.6.2/bin/splash.jpg
+Path=
+Terminal=false
+StartupNotify=false

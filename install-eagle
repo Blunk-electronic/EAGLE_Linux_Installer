@@ -2,15 +2,33 @@
 
 installer=$1
 version=$2
+target_dir=/opt
 
-echo "installing EAGLE" $version "..."
+proc_confirmation()
+	{
+	read -p "Press ENTER to continue. Otherwise press CTRL-C to abort. "
+	}
+
+echo "installing EAGLE" $version to target directory $target_dir "..."
+proc_confirmation
 
 echo "unzipping the install file" $installer "..."
-gunzip -k $installer
+# unpack without warning. Keep installer file.
+gunzip --force -k $installer
 
 installer=${installer%.gz}
-echo "unpacking the tape archive" $installer "..."
-tar --no-same-owner -xf $installer
+echo "unpacking the tape archive" $installer to target directory $target_dir "..."
+tar --warning none --no-same-owner -xf $installer -C $target_dir
+
+# clean up
+rm *.tar
+
+
+
+# change to target directory
+cd $target_dir
+
+echo "setting permissions ..."
 
 # Change permissions so that non-root users may enter and read it:
 chmod 755 eagle-$version
@@ -39,5 +57,7 @@ chmod 755 lib/*
 
 # Change permissions of Qt stuff:
 chmod 755 libexec/QtWebEngineProcess
+
+echo "Installation complete. Please adjust PATH variable."
 
 exit
